@@ -1,5 +1,4 @@
 ﻿// src/components/Accesos.tsx
-import React from 'react';
 
 interface Caso {
   id: string;
@@ -49,3 +48,4 @@ export default function Accesos({ casos }: { casos: Caso[] }) {
     </section>
   );
 }
+

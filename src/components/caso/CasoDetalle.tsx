@@ -129,7 +129,7 @@ export default function CasoDetalle({ casoId, onVolver }: { casoId: string, onVo
         const base64Content = reader.result as string;
         const paqueteCifrado = await cifrarDatos(base64Content, dek);
         
-        const nuevoDoc = { nombre: file.name, datosCifrados: paqueteCifrado };
+        
         const nuevosDocs = [...docs, { nombre: file.name, contenido: base64Content, datosCifrados: paqueteCifrado }];
         setDocs(nuevosDocs);
 
@@ -326,4 +326,5 @@ export default function CasoDetalle({ casoId, onVolver }: { casoId: string, onVo
     </div>
   );
 }
+
 
