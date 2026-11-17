@@ -107,16 +107,20 @@ export default function CasoDetalle({ casoId, onVolver }: { casoId: string, onVo
     const casoDb = await db.casos.get(casoId);
     if (!casoDb || !casoDb.datosCifrados) return alert("Primero debes guardar los datos del caso.");
 
-    subirCasoANube({
-      id: casoDb.id,
-      region: casoDb.region,
-      categoria: casoDb.categoria,
-      fecha: casoDb.fecha,
-      datosCifrados: casoDb.datosCifrados
-    });
-
-    setSincronizado(true);
-    setTimeout(() => setSincronizado(false), 3000);
+    try {
+      await subirCasoANube({
+        case_id: casoDb.id,
+        region: casoDb.region,
+        categoria: casoDb.categoria,
+        fecha: casoDb.fecha,
+        datos_cifrados: casoDb.datosCifrados
+      });
+      setSincronizado(true);
+      setTimeout(() => setSincronizado(false), 3000);
+    } catch (err) {
+      alert("❌ Error al sincronizar con la nube. Revisa tu conexión.");
+      console.error(err);
+    }
   };
 
   const subirDocumento = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -326,5 +330,6 @@ export default function CasoDetalle({ casoId, onVolver }: { casoId: string, onVo
     </div>
   );
 }
+
 
 
