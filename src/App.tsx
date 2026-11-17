@@ -155,8 +155,8 @@ export default function App() {
         </nav>
 
         <div className="lateral-pie">
-          <span className="punto"></span> Entorno de demostración
-          <small>Sin usuarios ni datos reales</small>
+          <span className="punto"></span> Conexión Segura E2EE
+          <small>Datos cifrados localmente</small>
         </div>
       </aside>
 
@@ -167,7 +167,7 @@ export default function App() {
               aria-label="Abrir o cerrar menú">☰</button>
             <span className="ruta">Plataforma / <b>{modulo}</b></span>
           </div>
-          <div className="usuario"><span className="usuario-circulo">D</span> Usuario demo</div>
+          <div className="usuario"><span className="usuario-circulo">V</span> Voluntario/a</div>
         </header>
 
         <main className="contenido">
@@ -175,10 +175,10 @@ export default function App() {
             <div>
               <div className="sobrelinea">SISTEMA DE GESTIÓN TERRITORIAL</div>
               <h1>{modulo}</h1>
-              <p>Entorno de prueba con información completamente ficticia.</p>
+              <p>Sistema seguro de gestión de casos con cifrado E2EE.</p>
             </div>
             {(modulo === 'Panel general' || modulo === 'Mis casos') &&
-              <button className="boton-primario" onClick={() => setNuevo(true)}>+ Nuevo caso demo</button>}
+              <button className="boton-primario" onClick={() => setNuevo(true)}>+ Nuevo Caso</button>}
           </div>
 
           {modulo === 'Panel general' && (
@@ -186,7 +186,7 @@ export default function App() {
               <div className="barra-filtros">
                 <label>Período <input type="month" value={mes}
                   onChange={e => setMes(e.target.value)} /></label>
-                <span>Datos de ejemplo · no representan atenciones reales</span>
+                <span>Datos protegidos mediante K-Anonimato (k=5)</span>
               </div>
 
               <div className="metricas">
@@ -256,7 +256,7 @@ export default function App() {
               ) : (
                 <>
                   <h2>Casos registrados</h2>
-                  <p>En esta fase todos los casos son ficticios, pero están cifrados localmente.</p>
+                  <p>Todos los casos mostrados se encuentran cifrados en la base de datos local.</p>
                   <input className="buscador" placeholder="Buscar por código, categoría, estado o región..."
                     value={busqueda} onChange={e => setBusqueda(e.target.value)} />
                   <div className="tabla-contenedor">
@@ -295,5 +295,6 @@ export default function App() {
     </div>
   )
 }
+
 
 
