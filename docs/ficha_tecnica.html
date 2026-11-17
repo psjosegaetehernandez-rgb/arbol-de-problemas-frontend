@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha Técnica - Árbol de Problemas</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 2rem; background-color: #f8fafc; }
+        .container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { color: #0f766e; border-bottom: 2px solid #0f766e; padding-bottom: 0.5rem; }
+        h2 { color: #1e293b; margin-top: 1.5rem; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        th { background-color: #f1f5f9; color: #0f766e; }
+        .badge { background: #0f766e; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ficha Técnica del Proyecto</h1>
+        <p><strong>Nombre del Proyecto:</strong> Árbol de Problemas (Codenamed) <br>
+        <strong>Beneficiario:</strong> Red Nacional de Migrantes y Promigrantes (Chile) / AMPRO <br>
+        <strong>Estado:</strong> MVP (Producto Mínimo Viable) Local-First <span class="badge">Fase 1</span></p>
+
+        <h2>1. Stack Tecnológico</h2>
+        <table>
+            <tr><th>Componente</th><th>Tecnología Utilizada</th></tr>
+            <tr><td>Frontend / UI</td><td>React 18 + TypeScript + Vite</td></tr>
+            <tr><td>Estilos</td><td>CSS Vanilla (diseño modular y responsivo)</td></tr>
+            <tr><td>Base de Datos Local</td><td>IndexedDB (vía Dexie.js)</td></tr>
+            <tr><td>Criptografía</td><td>Web Crypto API nativa (AES-256-GCM, PBKDF2)</td></tr>
+            <tr><td>Generación de PDF</td><td>pdf-lib (Generación en cliente)</td></tr>
+            <tr><td>Servidor Ciego (Simulado)</td><td>LocalStorage (Para pruebas de concepto)</td></tr>
+        </table>
+
+        <h2>2. Características de Seguridad</h2>
+        <ul>
+            <li><strong>Zero-Knowledge:</strong> El servidor (o base de datos central) nunca ve los datos en texto plano.</li>
+            <li><strong>Cifrado E2EE:</strong> Los casos se cifran con AES-256-GCM en la memoria del dispositivo antes de guardarse.</li>
+            <li><strong>Control de Acceso (CapBAC):</strong> Acceso a carpetas por medio de Tokens (contraseñas maestras por caso).</li>
+            <li><strong>K-Anonimato (k=5):</strong> Las estadísticas ocultan números menores a 5 para proteger identidades en zonas pequeñas.</li>
+            <li><strong>Offline-First:</strong> La aplicación funciona sin internet y guarda todo localmente de forma segura.</li>
+        </ul>
+
+        <h2>3. Módulos Implementados</h2>
+        <ol>
+            <li><strong>Panel General:</strong> Dashboard de métricas con protección K-Anonimato.</li>
+            <li><strong>Mis Casos:</strong> Lista de casos y apertura de bóvedas cifradas.</li>
+            <li><strong>Carpeta del Caso:</strong> Ficha cifrada, gestión de documentos cifrados y exportación de PDF seguro.</li>
+            <li><strong>Accesos:</strong> Generador de tokens (llaves) para asignar casos a voluntarios.</li>
+            <li><strong>Informes:</strong> Generación de PDF ejecutivos para incidencia política (con datos agrupados).</li>
+            <li><strong>Configuración:</strong> Exportación e importación de respaldos cifrados (.json.enc).</li>
+            <li><strong>Red Nacional (Estadísticas):</strong> Vista agregada simulando la recepción de datos de múltiples organizaciones.</li>
+        </ol>
+    </div>
+</body>
+</html>

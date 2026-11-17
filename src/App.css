@@ -1,0 +1,229 @@
+﻿:root{font-family:Inter,"Segoe UI",Arial,sans-serif;color:#24352f;background:#f6f8f6;font-synthesis:none;text-rendering:optimizeLegibility}
+*{box-sizing:border-box}
+body{margin:0;min-width:320px}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.aplicacion{min-height:100vh;display:flex}
+.lateral{width:260px;background:#253d34;color:#eaf0eb;display:flex;flex-direction:column;padding:25px 15px;position:fixed;inset:0 auto 0 0;z-index:10}
+.marca{display:flex;align-items:center;gap:12px;padding:5px 10px 35px}
+.marca-icono{width:39px;height:39px;border:1px solid #8ea99a;border-radius:11px;display:grid;place-items:center;font-size:23px;font-weight:700}
+.marca strong{display:block;font-size:15px}
+.marca small{display:block;color:#b4c8bb;font-size:11px;margin-top:4px}
+.etiqueta-menu{font-size:10px;letter-spacing:1.4px;color:#a7bdaf;padding:0 15px 15px}
+.lateral nav{display:grid;gap:5px}
+.nav-item{width:100%;display:flex;align-items:center;gap:13px;background:none;color:#cfdfd3;border:0;border-radius:9px;padding:13px 15px;text-align:left;font-size:13px}
+.nav-item:hover,.nav-item.activo{background:#3c5749;color:#fff}
+.nav-icono{width:22px;font-size:19px;text-align:center}
+.lateral-pie{margin-top:auto;border-top:1px solid #4a6456;padding:20px 12px;font-size:12px}
+.lateral-pie small{display:block;color:#a7bdaf;margin:8px 0 0 14px}
+.punto{display:inline-block;background:#9ec8a5;width:7px;height:7px;border-radius:50%;margin-right:5px}
+.principal{margin-left:260px;width:calc(100% - 260px);min-width:0}
+.cabecera{height:76px;border-bottom:1px solid #e5ebe6;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 40px}
+.ruta{font-size:13px;color:#8b9990}
+.ruta b{color:#31493d}
+.usuario{display:flex;align-items:center;gap:9px;font-size:12px}
+.usuario-circulo{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#e1eae3;font-weight:700}
+.contenido{max-width:1450px;margin:auto;padding:38px 40px}
+.titulo-seccion{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:30px}
+.sobrelinea{font-size:10px;letter-spacing:1.4px;font-weight:700;color:#6f8f7e}
+h1{font-size:30px;letter-spacing:-.9px;margin:8px 0}
+h2{font-size:17px;margin:0 0 10px}
+h3{font-size:14px;margin-top:25px}
+p{color:#7b8980;font-size:13px;line-height:1.7;margin:5px 0}
+.boton-primario{background:#315443;color:#fff;border:1px solid #315443;border-radius:9px;padding:11px 17px;font-size:12px;font-weight:600}
+.boton-primario:hover{background:#203b2d}
+.boton-secundario{background:#fff;color:#315443;border:1px solid #dce5dd;border-radius:9px;padding:11px 17px;font-size:12px;font-weight:600}
+.boton-texto{background:transparent;border:0;color:#32664c;font-weight:600;font-size:12px;padding:8px}
+.barra-filtros{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px;gap:12px;flex-wrap:wrap}
+.barra-filtros label{display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600}
+.barra-filtros input{padding:8px;border:1px solid #dce5dd;border-radius:8px;background:#fff;color:#31493d}
+.barra-filtros span{font-size:11px;color:#85938a}
+.metricas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:19px}
+.metrica,.panel{background:#fff;border:1px solid #e4eae5;border-radius:13px}
+.metrica{padding:22px}
+.metrica-superior{display:flex;justify-content:space-between;align-items:center;color:#728579;font-size:12px;gap:8px}
+.metrica-superior span:last-child{font-size:20px}
+.metrica strong{display:block;font-size:33px;margin:17px 0 7px;letter-spacing:-1px}
+.metrica small{font-size:11px;color:#96a399}
+.paneles{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+.panel{padding:25px;margin-bottom:18px}
+.panel>p{margin-bottom:20px}
+.barra-item{margin-top:20px}
+.barra-encabezado{display:flex;justify-content:space-between;font-size:12px;margin-bottom:9px}
+.barra-fondo{height:7px;background:#eff3ef;border-radius:20px;overflow:hidden}
+.barra-valor{height:100%;background:#739783;border-radius:20px;transition:width .2s}
+.fila-region{display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid #eef1ee;font-size:13px}
+.fila-region strong{color:#315443}
+.buscador{display:block;width:100%;max-width:480px;padding:12px;border:1px solid #dce5dd;border-radius:9px;margin:15px 0 20px}
+.tabla-contenedor{overflow-x:auto}
+table{width:100%;border-collapse:collapse;text-align:left;font-size:12px}
+th{color:#788b7d;font-weight:600;background:#f6f8f6}
+td,th{padding:14px 12px;border-bottom:1px solid #edf1ed;white-space:nowrap}
+.estado{background:#eef4ef;border-radius:30px;padding:6px 9px;font-size:11px;color:#44634e}
+.ficha-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;padding:24px 0;border-bottom:1px solid #edf1ed}
+.ficha-grid small{display:block;color:#8b9990;margin-bottom:8px}
+.ficha-grid strong{display:block;font-size:13px}
+.aviso{background:#f3f6f2;border-left:3px solid #789b83;padding:15px;margin:18px 0;font-size:12px;color:#576e5e;line-height:1.7}
+.vacio{padding:22px 0;color:#8b9990;font-size:12px}
+.modal-fondo{position:fixed;inset:0;background:#17271db3;display:grid;place-items:center;z-index:30;padding:16px}
+.modal{background:#fff;border-radius:16px;padding:27px;width:100%;max-width:500px;max-height:90vh;overflow:auto}
+.modal-cabecera{display:flex;justify-content:space-between;align-items:center}
+.cerrar{border:0;background:none;font-size:25px;color:#7d8b81}
+.modal form{display:grid;gap:17px;margin-top:20px}
+.modal form label{display:grid;gap:7px;font-size:12px;font-weight:600}
+.modal select,.modal textarea,.ficha-grid select{border:1px solid #dce5dd;border-radius:8px;padding:11px;background:#fff;color:#24352f;width:100%}
+.modal-acciones{display:flex;justify-content:flex-end;gap:10px;margin-top:8px}
+.menu-movil{display:none;background:none;border:0;font-size:23px;margin-right:12px;color:#315443}
+@media(max-width:1100px){.metricas{grid-template-columns:repeat(2,1fr)}.paneles{grid-template-columns:1fr}}
+@media(max-width:760px){.lateral{transform:translateX(-100%);transition:transform .2s}.lateral.abierto{transform:translateX(0)}.principal{margin-left:0;width:100%}.menu-movil{display:inline-block}.cabecera{height:64px;padding:0 18px}.contenido{padding:25px 16px}.titulo-seccion{align-items:flex-start;flex-direction:column}h1{font-size:25px}.usuario{font-size:0}.usuario-circulo{font-size:12px}.panel{padding:18px}}
+@media(max-width:430px){.metricas{gap:9px}.metrica{padding:15px}.metrica strong{font-size:27px}.metrica-superior{font-size:10px}.ficha-grid{grid-template-columns:1fr}}
+@media print{.lateral,.cabecera,.boton-primario,.boton-secundario{display:none!important}.principal{margin:0;width:100%}.contenido{padding:10px}.panel,.metrica{break-inside:avoid}}
+
+/* BLOQUE 07 - FORMULARIO MULTIETAPA */
+
+.formulario-caso{display:grid;gap:16px}
+.etapas{display:flex;gap:9px;margin-top:6px}
+.etapas span{height:8px;flex:1;background:#e7ece7;border-radius:20px;font-size:0}
+.etapas .etapa-actual{background:#315443}
+.formulario-etapa{font-size:11px;color:#668270}
+.campos-formulario{display:grid;gap:16px}
+.campos-formulario h3{margin:2px 0;font-size:15px}
+.campos-formulario label{display:grid;gap:7px;font-size:12px;font-weight:600}
+.campos-formulario input:not([type=checkbox]),
+.campos-formulario select,
+.campos-formulario textarea{
+  width:100%;padding:11px;border:1px solid #dce5dd;
+  border-radius:8px;background:#fff;color:#24352f;
+}
+.resumen-formulario{background:#f3f6f2;border-radius:9px;padding:15px}
+.resumen-formulario strong{font-size:12px}
+.confirmacion-demo{display:flex!important;flex-direction:row;align-items:flex-start;gap:10px!important;line-height:1.5}
+.confirmacion-demo input{margin-top:3px}
+.acciones-formulario{display:flex;justify-content:space-between;gap:12px;margin-top:8px}
+.boton-primario:disabled{opacity:.45;cursor:not-allowed}
+
+/* BLOQUE 08 - EXPEDIENTE INDIVIDUAL */
+.expediente-demo{min-height:380px}
+.expediente-encabezado{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:16px;padding:20px 0;border-bottom:1px solid #edf1ed
+}
+.expediente-encabezado small{
+  font-size:10px;letter-spacing:1.2px;color:#799180
+}
+.expediente-encabezado h2{font-size:24px;margin:7px 0}
+.expediente-pestanas{
+  display:flex;gap:6px;overflow-x:auto;
+  border-bottom:1px solid #e6ece7;margin-bottom:24px
+}
+.expediente-pestanas button{
+  border:0;background:transparent;color:#77897c;
+  padding:15px 13px;white-space:nowrap;font-size:12px
+}
+.expediente-pestanas button.seleccionada{
+  color:#315443;border-bottom:2px solid #315443;font-weight:700
+}
+.actuacion-formulario{
+  display:grid;gap:15px;max-width:580px;
+  padding:20px;background:#f7f9f7;border-radius:10px;margin:20px 0
+}
+.actuacion-formulario label{display:grid;gap:8px;font-size:12px;font-weight:600}
+.actuacion-formulario select,
+.actuacion-formulario textarea{
+  width:100%;padding:11px;border:1px solid #dce5dd;
+  border-radius:8px;background:#fff;color:#24352f
+}
+.actuacion-formulario button{justify-self:start}
+.actuacion-item{padding:16px 0;border-bottom:1px solid #edf1ed}
+.actuacion-meta{display:flex;justify-content:space-between;gap:12px;font-size:12px}
+.actuacion-meta small{color:#8b9990}
+@media(max-width:600px){
+  .expediente-encabezado{align-items:flex-start;flex-direction:column}
+}
+
+/* ==========================================================================
+   CIRUGÍA RESPONSIVE: Ajustes para Celulares y Tablets
+   ========================================================================== */
+
+/* Ocultar el botón de hamburguesa en pantallas grandes (PC) */
+.menu-movil {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #0f766e;
+}
+
+@media (max-width: 768px) {
+  /* 1. Convertir el menú lateral en un panel deslizante oculto */
+  .lateral {
+    position: fixed;
+    top: 0;
+    left: -280px; /* Oculto a la izquierda */
+    height: 100vh;
+    width: 260px;
+    z-index: 1000;
+    transition: left 0.3s ease-in-out;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    background-color: #1e293b; /* Asegurar fondo oscuro */
+  }
+
+  /* Cuando el estado 'menu' está activo, se desliza hacia adentro */
+  .lateral.abierto {
+    left: 0;
+  }
+
+  /* 2. El contenido principal ocupa todo el ancho */
+  .principal {
+    margin-left: 0 !important;
+    width: 100%;
+  }
+
+  /* 3. Mostrar el botón de hamburguesa */
+  .menu-movil {
+    display: block;
+  }
+
+  /* 4. Apilar las tarjetas de métricas y paneles verticalmente */
+  .metricas, .paneles {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .metrica, .panel {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  /* 5. Ajustar la cabecera para móviles */
+  .cabecera {
+    padding: 1rem;
+    flex-direction: row; /* Mantener el título y usuario en línea si es posible */
+    align-items: center;
+  }
+
+  /* 6. Hacer que las tablas tengan scroll horizontal en lugar de romperse */
+  .tabla-contenedor {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 7. Ajustar los botones para que sean fáciles de tocar */
+  .botones-accion {
+    flex-direction: column;
+  }
+  
+  .botones-accion button, .boton-primario {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+
+  /* 8. Hacer el texto de la bóveda más legible */
+  .boveda-bloqueada, .boveda-abierta {
+    padding: 1rem;
+  }
+}

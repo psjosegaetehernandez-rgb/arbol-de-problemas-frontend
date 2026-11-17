@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Manual de Usuario - Árbol de Problemas</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 2rem; background-color: #f8fafc; }
+        .container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { color: #1d4ed8; border-bottom: 2px solid #1d4ed8; padding-bottom: 0.5rem; }
+        h2 { color: #1e293b; margin-top: 1.5rem; }
+        h3 { color: #0f766e; }
+        .warning { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; margin: 1rem 0; border-radius: 4px; }
+        .step { background: #f1f5f9; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manual de Usuario</h1>
+        <p>Bienvenido/a a <strong>Árbol de Problemas</strong>, la plataforma segura para la gestión de casos de la Red Nacional.</p>
+
+        <div class="warning">
+            <strong>⚠️ Regla de Oro de Seguridad:</strong> Esta plataforma no tiene "recuperación de contraseña". Si pierdes el Token de un caso o la contraseña de tu respaldo, la información se perderá irremediablemente. Así proteges a las personas.
+        </div>
+
+        <h2>1. Crear un Caso Nuevo</h2>
+        <div class="step">
+            <ol>
+                <li>Ve a <strong>"Mis casos"</strong> y presiona el botón <strong>"+ Nuevo caso demo"</strong>.</li>
+                <li>Llena el formulario (los datos se cifrarán automáticamente).</li>
+                <li>Al guardar, el sistema te llevará a la carpeta del caso, la cual estará bloqueada.</li>
+            </ol>
+        </div>
+
+        <h2>2. Abrir la Bóveda (Token)</h2>
+        <div class="step">
+            <ol>
+                <li>Cuando abras un caso, verás un candado amarillo.</li>
+                <li>Ingresa el Token de seguridad. Para los casos nuevos en esta demo, el token por defecto es <strong>1234</strong>.</li>
+                <li>Haz clic en <strong>"Desbloquear Carpeta"</strong>. Ahora puedes leer y editar la ficha.</li>
+            </ol>
+        </div>
+
+        <h2>3. Adjuntar Documentos</h2>
+        <div class="step">
+            <ol>
+                <li>Dentro de la carpeta desbloqueada, ve a la pestaña <strong>"Documentos"</strong>.</li>
+                <li>Haz clic en <strong>"+ Adjuntar Documento"</strong> y selecciona una foto o PDF.</li>
+                <li>El archivo se cifrará en tu dispositivo antes de guardarse (verás el ícono 🔒).</li>
+            </ol>
+        </div>
+
+        <h2>4. Exportar PDF Seguro</h2>
+        <div class="step">
+            <ol>
+                <li>En la pestaña "Ficha del Caso", presiona <strong>"📄 Exportar PDF"</strong>.</li>
+                <li>Se descargará un documento oficial con la información descifrada. Úsalo solo para imprimir y no lo compartas por redes.</li>
+            </ol>
+        </div>
+
+        <h2>5. Respaldos Cifrados (¡Vital!)</h2>
+        <div class="step">
+            <ol>
+                <li>Ve a la pestaña <strong>"Configuración"</strong> en el menú lateral.</li>
+                <li>Presiona <strong>"🔒 Exportar Respaldo"</strong>. Se te pedirá crear una contraseña (guárdala muy bien).</li>
+                <li>Se descargará un archivo <code>.json.enc</code>. Guárdalo en un pendrive.</li>
+                <li>Si cambias de computadora, usa <strong>"🔓 Importar Respaldo"</strong> en la nueva PC, sube el archivo y pon la contraseña.</li>
+            </ol>
+        </div>
+
+        <h2>6. Incidencia Política (Informes y Red)</h2>
+        <div class="step">
+            <ul>
+                <li><strong>Informes:</strong> Genera un PDF mensual con las estadísticas agrupadas (K-Anonimato) para presentar a autoridades.</li>
+                <li><strong>Estadísticas:</strong> Al presionar "Sincronizar a la Nube" dentro de un caso, los metadatos anónimos suben a este panel para comparar regiones sin exponer a las personas.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

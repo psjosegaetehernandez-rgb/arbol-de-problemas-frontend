@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Informe Profesional de Arquitectura - Árbol de Problemas</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 1000px; margin: 0 auto; padding: 2rem; background-color: #f8fafc; }
+        .container { background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        h1 { color: #0f172a; border-bottom: 3px solid #0f766e; padding-bottom: 1rem; font-size: 2.2rem; }
+        h2 { color: #0f766e; margin-top: 2.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem; }
+        h3 { color: #1e293b; margin-top: 1.5rem; }
+        p { color: #475569; text-align: justify; }
+        code { background: #f1f5f9; color: #0f766e; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: 'Courier New', monospace; font-weight: bold; }
+        pre { background: #1e293b; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-size: 0.9rem; }
+        .diagram { background: #f8fafc; border: 2px dashed #cbd5e1; padding: 1.5rem; border-radius: 8px; text-align: center; font-family: monospace; white-space: pre; color: #334155; margin: 1.5rem 0; }
+        .highlight { background: #f0fdf4; border-left: 4px solid #16a34a; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; }
+        .warning { background: #fef2f2; border-left: 4px solid #dc2626; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; }
+        ul, ol { color: #475569; }
+        li { margin-bottom: 0.5rem; }
+        .badge { display: inline-block; background: #0f766e; color: white; padding: 0.2rem 0.8rem; border-radius: 999px; font-size: 0.8rem; font-weight: bold; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="badge">Documento Técnico Oficial - MVP</span>
+        <h1>Informe de Arquitectura y Desarrollo de Software</h1>
+        <p><strong>Proyecto:</strong> Plataforma de Gestión Segura de Casos Migratorios ("Árbol de Problemas")<br>
+        <strong>Cliente:</strong> Red Nacional de Migrantes y Promigrantes / AMPRO<br>
+        <strong>Autor:</strong> Departamento de Ingeniería Informática<br>
+        <strong>Estado:</strong> MVP (Producto Mínimo Viable) Completado y Funcional</p>
+
+        <h2>1. Resumen Ejecutivo</h2>
+        <p>La Red Nacional enfrentaba un dilema crítico: necesitaba centralizar datos de vulneraciones para generar incidencia política, pero el uso de herramientas tradicionales (Google Forms, Excel, nubes comerciales) exponía a personas migrantes a riesgos de filtración, persecución y acciones legales.</p>
+        <p>Como solución, se ha desarrollado una <strong>PWA (Progressive Web App) Local-First con arquitectura Zero-Knowledge y Cifrado de Extremo a Extremo (E2EE)</strong>. Los datos se cifran en el dispositivo del voluntario antes de tocar la red. La plataforma permite la gestión de casos, exportación de documentos seguros, respaldos cifrados y generación de estadísticas protegidas mediante K-Anonimato.</p>
+
+        <h2>2. Stack Tecnológico</h2>
+        <ul>
+            <li><strong>Frontend:</strong> React 18 + TypeScript + Vite (por su velocidad y tipado estricto).</li>
+            <li><strong>Estilos:</strong> CSS modular (diseño Responsive adaptado para Android).</li>
+            <li><strong>Base de Datos Local:</strong> IndexedDB mediante <code>Dexie.js</code> (permite funcionamiento offline).</li>
+            <li><strong>Criptografía:</strong> Web Crypto API nativa (Estándar W3C).</li>
+            <li><strong>Generación de Documentos:</strong> <code>pdf-lib</code> (Generación de PDFs en el lado del cliente).</li>
+            <li><strong>PWA:</strong> <code>vite-plugin-pwa</code> (Instalación en pantalla de inicio y Service Workers).</li>
+        </ul>
+
+        <h2>3. Arquitectura del Sistema (Modelo de 3 Capas)</h2>
+        <div class="diagram">
+┌─────────────────────────────────────────────────────────────┐
+│  CAPA 1 · CLIENTE (Dispositivo del Voluntario)              │
+│  - React App (PWA)                                          │
+│  - Cifra/Descifra con AES-256-GCM (Web Crypto API)          │
+│  - Almacena en IndexedDB (Dexie)                            │
+└────────────────────┬────────────────────────────────────────┘
+                     │ Envía/Recibe SOLO Blobs Cifrados
+┌────────────────────▼────────────────────────────────────────┐
+│  CAPA 2 · SERVIDOR CIEGO (Nube / API)                       │
+│  - Recibe metadatos públicos (Región, Categoría, Mes)       │
+│  - Almacena los blobs (JSON cifrado) sin poder leerlos      │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+┌────────────────────▼────────────────────────────────────────┐
+│  CAPA 3 · COORDINACIÓN DE RED (Dashboard Estadístico)       │
+│  - Aplica K-Anonimato (k=5)                                 │
+│  - Ve tendencias comparativas sin abrir carpetas            │
+└─────────────────────────────────────────────────────────────┘
+        </div>
+
+        <h2>4. Características de Seguridad Implementadas</h2>
+        
+        <h3>4.1. Cifrado E2EE (AES-256-GCM)</h3>
+        <p>La app no usa contraseñas simples. Utiliza <code>PBKDF2</code> (con 100.000 iteraciones) para derivar una llave criptográfica de 256 bits a partir del "Token de Caso" ingresado por el voluntario. Los datos (texto, imágenes y PDFs) se cifran y descifran exclusivamente en la memoria RAM del dispositivo.</p>
+
+        <h3>4.2. Control de Acceso Basado en Capacidades (CapBAC)</h3>
+        <p>No existen "usuarios globales". Al crear un caso, el sistema genera un Token único (ej. <code>A1B2-C3D4</code>). Este token es la única llave para abrir esa carpeta. El sistema no guarda el token en texto plano, garantizando que solo el administrador que lo creó pueda entregarlo.</p>
+
+        <h3>4.3. Gestión Documental Cifrada</h3>
+        <p>Los voluntarios pueden subir fotos o PDFs. El archivo se convierte a Base64, se cifra con la llave del caso y se guarda en IndexedDB. Al descargarlo, se descifra en memoria. La nube nunca ve la imagen original.</p>
+
+        <h3>4.4. Borrado Seguro (Data Erasure)</h3>
+        <p>Se implementó una "Zona de Peligro" que requiere confirmación explícita por texto para eliminar un caso de la base de datos local, evitando borrados accidentales de información sensible.</p>
+
+        <h2>5. Privacidad Estadística: K-Anonimato (k=5)</h2>
+        <p>Para evitar que un caso único en una ciudad pequeña identifique a una persona, el Dashboard (Panel General, Informes y Red Nacional) aplica la regla de K-Anonimato.</p>
+        <div class="highlight">
+            <strong>Regla de Negocio:</strong> Si una agrupación (por región o categoría) tiene entre 1 y 4 casos, la interfaz muestra el texto <code>Agrupado (<5)</code> en color mostaza. Cuando la cifra llega a 5, se revela el número real. Esto permite hacer incidencia política demostrando la existencia del problema sin señalar individuos.
+        </div>
+
+        <h2>6. Resiliencia y Respaldos (Zero-Knowledge)</h2>
+        <p>El mayor riesgo del E2EE es la pérdida del dispositivo. Se implementó un módulo de exportación <code>.json.enc</code> en la pantalla de Configuración:</p>
+        <ul>
+            <li>El sistema extrae todos los blobs cifrados de la base local.</li>
+            <li>El administrador define una "Contraseña de Respaldo".</li>
+            <li>El archivo se cifra nuevamente con esta contraseña y se descarga.</li>
+            <li>La restauración (Importar Respaldo) descifra el archivo y repuebla IndexedDB en un dispositivo nuevo.</li>
+        </ul>
+
+        <h2>7. Simulación de la Red Nacional (Servidor Ciego)</h2>
+        <p>Para demostrar la escalabilidad del modelo, se implementó una vista de "Estadísticas" que simula un servidor ciego central. Los voluntarios presionan "Sincronizar a la Nube", enviando únicamente los metadatos públicos (Región, Categoría, Fecha) y el blob cifrado. La coordinación de la Red ve las tendencias comparativas en tiempo real, cumpliendo el sueño de la incidencia política macro sin vulnerar la privacidad.</p>
+
+        <h2>8. Despliegue (PWA)</h2>
+        <p>La aplicación está configurada como PWA (Progressive Web App). Los voluntarios pueden ingresar desde Chrome en su Android y seleccionar "Agregar a la pantalla principal". La app se abrirá a pantalla completa, ocultando la barra de navegación, y tendrá un diseño adaptado (Responsive) con menú de hamburguesa y botones táctiles grandes.</p>
+
+        <h2>9. Próximos Pasos (Roadmap a Producción)</h2>
+        <ol>
+            <li><strong>Backend Real:</strong> Migrar el simulador de <code>localStorage</code> a una base de datos central (PostgreSQL) y almacenamiento de objetos (AWS S3) con políticas estrictas de acceso.</li>
+            <li><strong>Gestión de Identidad:</strong> Implementar Passkeys/WebAuthn para evitar el ingreso manual de tokens largos.</li>
+            <li><strong>Auditoría de Seguridad:</strong> Realizar un Pentesting externo sobre el flujo de derivación de llaves (PBKDF2) y las políticas de CORS.</li>
+            <li><strong>Cifrado de PDFs:</strong> Integrar <code>qpdf-wasm</code> para que los reportes exportados soliciten contraseña al abrirse.</li>
+        </ol>
+
+        <br><br>
+        <p style="text-align: center; color: #94a3b8; font-size: 0.9rem;">Fin del informe técnico. Generado por el equipo de ingeniería.</p>
+    </div>
+</body>
+</html>
